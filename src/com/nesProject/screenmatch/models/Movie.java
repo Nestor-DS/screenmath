@@ -1,13 +1,20 @@
 package com.nesProject.screenmatch.models;
 
-public class Movie extends Title{
+import screenmatch.calculations.Clasification;
+
+public class Movie extends Title implements Clasification {
     private String director;
 
-    public java.lang.String getDirector() {
+    public String getDirector(){
         return director;
     }
 
-    public void setDirector(java.lang.String director) {
+    public void setDirector(String director){
         this.director = director;
+    }
+
+    @Override
+    public int getClasification() {
+        return (int) (mindCalule() / 2);
     }
 }
