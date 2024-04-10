@@ -7,40 +7,40 @@ public class Title {
     private int durationMin;
     private boolean includedInPlan;
     private double sumEvaluation;
-    private int total;
+    private int totalEvaluations;
 
     // Getters and Setters
 
-    public java.lang.String getName() { // GetName
+    public String getName() {
         return name;
     }
-    public void setName(java.lang.String name) { // SetName
-        this.name = name;
-    }
-    public int getReleaseDate() { // GetRelease
+
+    public int getReleaseDate() {
         return releaseDate;
     }
-    public void setReleaseDate(int releaseDate) { // SetRelease
+
+    public int getDurationMin() {
+        return durationMin;
+    }
+
+    public boolean isIncludedInPlan(){
+        return includedInPlan;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setReleaseDate(int releaseDate){
         this.releaseDate = releaseDate;
     }
 
-    public int getDurationMin() { // GetDuration
-        return durationMin;
-    }
-    public void setDurationMin(int durationMin) { // SetDuration
+    public void setDurationMin(int durationMin){
         this.durationMin = durationMin;
     }
-
-
-    public boolean isIncludedInPlan() {
-        return includedInPlan;
-    }
-    public void setIncludedInPlan(boolean includedInPlan) { // SetInclude
+    public void setIncludedInPlan(boolean includedInPlan){
         this.includedInPlan = includedInPlan;
     }
-
-    public int getTotal(){
-        return total;
+    public int getTotalEvaluations(){
+        return totalEvaluations;
     }
 
     // Functions
@@ -48,16 +48,16 @@ public class Title {
     public void sampleTechnicalSheet(){
         System.out.println("""
                 The name of the movie is %s released in %d with a duration of %d minutes
-                """.formatted(name, releaseDate, durationMin));
+                """.formatted(name, releaseDate, getDurationMin()));
     }
 
     public void valoration(double note){
         sumEvaluation += note;
-        total++;
+        totalEvaluations++;
     }
 
     public double mindCalule(){
-        return sumEvaluation/total;
+        return sumEvaluation / totalEvaluations;
     }
 
 }
