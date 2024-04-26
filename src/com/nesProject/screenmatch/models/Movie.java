@@ -1,9 +1,13 @@
 package com.nesProject.screenmatch.models;
 
-import screenmatch.calculations.Clasification;
+import com.nesProject.screenmatch.calculations.Classification;
 
-public class Movie extends Title implements Clasification {
+public class Movie extends Title implements Classification {
     private String director;
+
+    public Movie(String name, int releaseDate) {
+        super(name, releaseDate);
+    }
 
     public String getDirector(){
         return director;
@@ -16,5 +20,10 @@ public class Movie extends Title implements Clasification {
     @Override
     public int getClasification() {
         return (int) (mindCalule() / 2);
+    }
+
+    @Override
+    public String toString() {
+        return "Pelicula"+this.getName()+" ("+getReleaseDate()+")";
     }
 }

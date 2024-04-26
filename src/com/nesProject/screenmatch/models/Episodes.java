@@ -1,8 +1,8 @@
 package com.nesProject.screenmatch.models;
 
-import screenmatch.calculations.Clasification;
+import com.nesProject.screenmatch.calculations.Classification;
 
-public class Episodes implements Clasification {
+public class Episodes implements Classification {
     private int number;
 
     private String name;

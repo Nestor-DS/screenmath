@@ -1,6 +1,6 @@
 package com.nesProject.screenmatch.models;
 
-public class Title {
+public class Title implements Comparable <Title>{
     // Variables
     private String name;
     private int releaseDate;
@@ -43,6 +43,11 @@ public class Title {
         return totalEvaluations;
     }
 
+    public Title(String name, int releaseDate) {
+        this.name = name;
+        this.releaseDate = releaseDate;
+    }
+
     // Functions
 
     public void sampleTechnicalSheet(){
@@ -60,4 +65,8 @@ public class Title {
         return sumEvaluation / totalEvaluations;
     }
 
+    @Override
+    public int compareTo(Title otherTitle) {
+        return this.getName().compareTo(otherTitle.getName());
+    }
 }

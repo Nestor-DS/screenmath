@@ -1,7 +1,7 @@
-package screenmatch.calculations;
+package com.nesProject.screenmatch.calculations;
 
 public class RecommendedFilters {
-    public void filter(Clasification clasification){
+    public void filter(Classification clasification){
         if(clasification.getClasification() >= 4){
             System.out.println("The best evaluate :)");
         } else {
