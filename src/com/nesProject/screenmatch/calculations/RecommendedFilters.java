@@ -1,11 +1,15 @@
 package com.nesProject.screenmatch.calculations;
 
 public class RecommendedFilters {
-    public void filter(Classification clasification){
-        if(clasification.getClasification() >= 4){
-            System.out.println("The best evaluate :)");
+    /**
+     * Filters the classification.
+     * @param classification The classification to filter.
+     */
+    public void filter(Classification classification){
+        if(classification.getClassification() >= 4){
+            System.out.println("Highly recommended :)");
         } else {
-            System.out.println("It's not very good");
+            System.out.println("Not highly recommended");
         }
     }
 }

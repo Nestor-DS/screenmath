@@ -17,13 +17,21 @@ public class Movie extends Title implements Classification {
         this.director = director;
     }
 
+    /**
+     * Gets the classification of the movie.
+     * @return The classification of the movie.
+     */
     @Override
-    public int getClasification() {
-        return (int) (mindCalule() / 2);
+    public int getClassification() {
+        return (int) (mindCalculate() / 2); // assuming mindCalculate is a method in the superclass
     }
 
+    /**
+     * Returns a string representation of the movie.
+     * @return A string representation of the movie.
+     */
     @Override
     public String toString() {
-        return "Pelicula"+this.getName()+" ("+getReleaseDate()+")";
+        return "Movie: " + this.getName() + " (" + getReleaseDate() + ")";
     }
 }

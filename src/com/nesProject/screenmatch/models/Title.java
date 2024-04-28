@@ -1,8 +1,8 @@
 package com.nesProject.screenmatch.models;
 
-import com.nesProject.screenmatch.exceptions.TimeConvertionException;
+import com.nesProject.screenmatch.exceptions.TimeConversionException;
 
-public class Title implements Comparable <Title>{
+public class Title implements Comparable<Title> {
 
     // Variables
     private String name;
@@ -13,14 +13,20 @@ public class Title implements Comparable <Title>{
     private double sumEvaluation;
     private int totalEvaluations;
 
+    // Constructors
+
     public Title(TitleOMDB titleOMDB) {
         this.name = titleOMDB.title();
         this.releaseDate = Integer.valueOf(titleOMDB.year());
-        if(titleOMDB.runtime().contains("N/A")){
-            throw new TimeConvertionException("No se puedo convertir la duración" +
-                    ", porque se encontro un valor N/A");
+        if (titleOMDB.runtime().contains("N/A")) {
+            throw new TimeConversionException("Failed to convert duration: N/A value found.");
         }
-        this.durationMin = Integer.valueOf(titleOMDB.runtime().substring(0,3).replace(" ",""));
+        this.durationMin = Integer.valueOf(titleOMDB.runtime().substring(0, 3).replace(" ", ""));
+    }
+
+    public Title(String name, int releaseDate) {
+        this.name = name;
+        this.releaseDate = releaseDate;
     }
 
     // Getters and Setters
@@ -37,57 +43,59 @@ public class Title implements Comparable <Title>{
         return durationMin;
     }
 
-    public boolean isIncludedInPlan(){
+    public boolean isIncludedInPlan() {
         return includedInPlan;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
-    public void setReleaseDate(int releaseDate){
+
+    public void setReleaseDate(int releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    public void setDurationMin(int durationMin){
+    public void setDurationMin(int durationMin) {
         this.durationMin = durationMin;
     }
-    public void setIncludedInPlan(boolean includedInPlan){
+
+    public void setIncludedInPlan(boolean includedInPlan) {
         this.includedInPlan = includedInPlan;
     }
-    public int getTotalEvaluations(){
-        return totalEvaluations;
-    }
 
-    public Title(String name, int releaseDate) {
-        this.name = name;
-        this.releaseDate = releaseDate;
+    public int getTotalEvaluations() {
+        return totalEvaluations;
     }
 
     // Functions
 
-    public void sampleTechnicalSheet(){
-        System.out.println("""
-                The name of the movie is %s released in %d with a duration of %d minutes
-                """.formatted(name, releaseDate, getDurationMin()));
+    public void sampleTechnicalSheet() {
+        System.out.println(String.format("The name of the movie is %s released in %d with a duration of %d minutes",
+                name, releaseDate, getDurationMin()));
     }
 
-    public void valoration(double note){
+    public void valoration(double note) {
         sumEvaluation += note;
         totalEvaluations++;
     }
 
-    public double mindCalule(){
+    public double mindCalculate() {
         return sumEvaluation / totalEvaluations;
     }
+
+    // Comparable Interface
 
     @Override
     public int compareTo(Title otherTitle) {
         return this.getName().compareTo(otherTitle.getName());
     }
 
+    // String representation
+
     @Override
     public String toString() {
         return "(Title:" +
-                "name='" + name + '\'' +
+                " name='" + name + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", duration=" + durationMin + ")\n";
     }

@@ -2,13 +2,10 @@ package com.nesProject.screenmatch.models;
 
 import com.nesProject.screenmatch.calculations.Classification;
 
-public class Episodes implements Classification {
+public class Episode implements Classification {
     private int number;
-
     private String name;
-
-    private Serie serie;
-
+    private Series series;
     private int totalViews;
 
     // Getter and Setter
@@ -29,12 +26,12 @@ public class Episodes implements Classification {
         this.name = name;
     }
 
-    public Serie getSerie() {
-        return serie;
+    public Series getSerie() {
+        return series;
     }
 
-    public void setSerie(Serie serie) {
-        this.serie = serie;
+    public void setSerie(Series series) {
+        this.series = series;
     }
 
     public int getTotalViews() {
@@ -45,11 +42,15 @@ public class Episodes implements Classification {
         this.totalViews = totalViews;
     }
 
+    /**
+     * Gets the classification of the episode based on its total views.
+     * @return The classification of the episode.
+     */
     @Override
-    public int getClasification() {
+    public int getClassification() {
         if(totalViews > 100){
             return 4;
-        }else {
+        } else {
             return 2;
         }
     }
