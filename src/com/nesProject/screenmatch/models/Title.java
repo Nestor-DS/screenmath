@@ -1,13 +1,27 @@
 package com.nesProject.screenmatch.models;
 
+import com.nesProject.screenmatch.exceptions.TimeConvertionException;
+
 public class Title implements Comparable <Title>{
+
     // Variables
     private String name;
     private int releaseDate;
+
     private int durationMin;
     private boolean includedInPlan;
     private double sumEvaluation;
     private int totalEvaluations;
+
+    public Title(TitleOMDB titleOMDB) {
+        this.name = titleOMDB.title();
+        this.releaseDate = Integer.valueOf(titleOMDB.year());
+        if(titleOMDB.runtime().contains("N/A")){
+            throw new TimeConvertionException("No se puedo convertir la duración" +
+                    ", porque se encontro un valor N/A");
+        }
+        this.durationMin = Integer.valueOf(titleOMDB.runtime().substring(0,3).replace(" ",""));
+    }
 
     // Getters and Setters
 
@@ -68,5 +82,13 @@ public class Title implements Comparable <Title>{
     @Override
     public int compareTo(Title otherTitle) {
         return this.getName().compareTo(otherTitle.getName());
+    }
+
+    @Override
+    public String toString() {
+        return "(Title:" +
+                "name='" + name + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", duration=" + durationMin + ")\n";
     }
 }
