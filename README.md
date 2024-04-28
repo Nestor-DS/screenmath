@@ -61,5 +61,3 @@ Poster API requests:
 ----------
 ## Class attributes and methods:
 ![classDiagram.svg](others%2FclassDiagram.svg)
-
-
