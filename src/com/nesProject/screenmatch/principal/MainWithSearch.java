@@ -30,7 +30,7 @@ public class MainWithSearch {
                 .create();
 
         while (true) {
-            String apiKey = "8a65ba68";
+            String apiKey = "8a65ba68"; // Your APIKey :)
             System.out.println("Movie:");
             var search = scanner.nextLine();
             if (search.equalsIgnoreCase("Exit")) {

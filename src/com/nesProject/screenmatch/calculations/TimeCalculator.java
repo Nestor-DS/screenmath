@@ -1,6 +1,5 @@
 package com.nesProject.screenmatch.calculations;
 
-import com.nesProject.screenmatch.models.Movie;
 import com.nesProject.screenmatch.models.Title;
 
 public class TimeCalculator {
